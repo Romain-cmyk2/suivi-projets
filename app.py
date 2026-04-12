@@ -95,13 +95,19 @@ def restore_session():
     """Restaure la session depuis les query params, puis le fichier JSON."""
     params = st.query_params
 
+    # Initialiser toutes les clés session avec des valeurs par défaut
+    if "utilisateur" not in st.session_state:
+        st.session_state.utilisateur = None
+    if "logged_out" not in st.session_state:
+        st.session_state.logged_out = False
+
     # Ne pas auto-reconnecter si l'utilisateur vient de se déconnecter
-    if st.session_state.get("logged_out"):
+    if st.session_state.logged_out:
         st.session_state.utilisateur = None
         return
 
     # 1. Restaurer l'utilisateur
-    if "utilisateur" not in st.session_state or st.session_state.utilisateur is None:
+    if st.session_state.utilisateur is None:
         # D'abord depuis l'URL
         if "user" in params:
             st.session_state.utilisateur = params["user"]
