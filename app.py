@@ -886,15 +886,18 @@ def afficher_piece_jointe(pj, prefix="pj"):
             st.image(chemin, use_container_width=True)
 
         elif ext == ".pdf":
-            import base64
-            with open(chemin, "rb") as f:
-                pdf_bytes = f.read()
-            b64 = base64.b64encode(pdf_bytes).decode("utf-8")
-            st.markdown(
-                f'<iframe src="data:application/pdf;base64,{b64}" '
-                f'width="100%" height="600" type="application/pdf"></iframe>',
-                unsafe_allow_html=True
-            )
+            try:
+                from pypdf import PdfReader
+                reader = PdfReader(chemin)
+                st.markdown(f"**{len(reader.pages)} page(s)**")
+                for i, page in enumerate(reader.pages):
+                    texte = page.extract_text()
+                    if texte:
+                        with st.container(border=True):
+                            st.markdown(f"**Page {i+1}**")
+                            st.text(texte)
+            except Exception as e:
+                st.warning(f"Apercu texte indisponible ({e}). Utilisez le bouton Telecharger.")
 
         elif ext in {".xlsx", ".xls"}:
             try:
