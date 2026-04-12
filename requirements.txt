@@ -4,3 +4,4 @@ plotly
 openpyxl
 pypdf
 python-docx
+streamlit-pdf-viewer

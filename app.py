@@ -887,17 +887,12 @@ def afficher_piece_jointe(pj, prefix="pj"):
 
         elif ext == ".pdf":
             try:
-                from pypdf import PdfReader
-                reader = PdfReader(chemin)
-                st.markdown(f"**{len(reader.pages)} page(s)**")
-                for i, page in enumerate(reader.pages):
-                    texte = page.extract_text()
-                    if texte:
-                        with st.container(border=True):
-                            st.markdown(f"**Page {i+1}**")
-                            st.text(texte)
+                from streamlit_pdf_viewer import pdf_viewer
+                with open(chemin, "rb") as f:
+                    pdf_bytes = f.read()
+                pdf_viewer(pdf_bytes, height=700)
             except Exception as e:
-                st.warning(f"Apercu texte indisponible ({e}). Utilisez le bouton Telecharger.")
+                st.warning(f"Apercu PDF indisponible ({e}). Utilisez le bouton Telecharger.")
 
         elif ext in {".xlsx", ".xls"}:
             try:
