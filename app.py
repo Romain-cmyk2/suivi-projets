@@ -41,9 +41,9 @@ COULEURS_STATUT = {"À faire": "#9e9e9e", "En cours": "#2196f3", "En revue": "#f
 st.set_page_config(page_title="Suivi de Projets", page_icon="📋", layout="wide")
 init_db()
 
-# Seed des utilisateurs par défaut au premier lancement
-from seed import seed_utilisateurs
-seed_utilisateurs()
+# Seed des utilisateurs et projets par défaut au premier lancement
+from seed import seed
+seed()
 
 # --- CSS ---
 

@@ -2,5 +2,8 @@ __pycache__/
 *.pyc
 data/backups/
 data/sessions.json
+data/projets.db
+data/projets.db-wal
+data/projets.db-shm
 uploads/
 .streamlit/secrets.toml

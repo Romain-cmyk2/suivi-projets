@@ -1,0 +1,344 @@
+{
+  "utilisateurs": [
+    {
+      "id": 2,
+      "nom": "Clara",
+      "email": "Clara@sconseil.be",
+      "created_at": "2026-04-12 12:25:36",
+      "password_hash": null
+    },
+    {
+      "id": 4,
+      "nom": "Evelyne",
+      "email": "evelyne@sconseil.be",
+      "created_at": "2026-04-12 16:38:27",
+      "password_hash": null
+    },
+    {
+      "id": 1,
+      "nom": "Romain",
+      "email": "romain@sconseil.Be",
+      "created_at": "2026-04-12 12:21:55",
+      "password_hash": null
+    },
+    {
+      "id": 3,
+      "nom": "Yves",
+      "email": "yves@sconseil.be",
+      "created_at": "2026-04-12 12:37:20",
+      "password_hash": null
+    }
+  ],
+  "projets": [
+    {
+      "id": 1,
+      "nom": "IAlfred",
+      "description": "Création d'une coopération IA\n\n**Objectifs :**\n- Création de la coopérative\n- Septentrio en charge de l'administration\n- Réunion de 6 coopérateurs min.",
+      "statut": "Actif",
+      "deadline": "2026-04-22",
+      "cree_par": "Romain",
+      "created_at": "2026-04-12 12:24:55",
+      "updated_at": "2026-04-12 12:24:55",
+      "taches": [
+        {
+          "id": 1,
+          "projet_id": 1,
+          "titre": "Finaliser la présentation d'IAlfred",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-17",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 12:24:55",
+          "updated_at": "2026-04-12 12:26:17",
+          "projet_nom": "IAlfred",
+          "commentaires": []
+        },
+        {
+          "id": 2,
+          "projet_id": 1,
+          "titre": "Contacter les coopérateurs pour une réunion",
+          "description": "dejà quelques mails : Christophe Garcia Magillisen <christophe@egide-group.be>; Maxim TOLLER <m.toller@m24-avocats.be>; Laurent Haupert <lha@yellow5.be>",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-22",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 12:24:56",
+          "updated_at": "2026-04-12 13:33:22",
+          "projet_nom": "IAlfred",
+          "commentaires": []
+        },
+        {
+          "id": 3,
+          "projet_id": 1,
+          "titre": "Réalisation outil mapping",
+          "description": "Réalisation d'un outil de mapping de process avec une situation avant et après avec identification des process à simplifier, améliorer ou automatiser via I.A. ou outils construits via I.A.  + outil visant à mapper les flux de données et documentation avec pour but de proposer solution de centralisation pour faciliter traitement données et documentations via environnement Microsoft",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Yves",
+          "deadline": "2026-04-29",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 12:32:41",
+          "updated_at": "2026-04-12 12:37:56",
+          "projet_nom": "IAlfred",
+          "commentaires": []
+        }
+      ],
+      "pieces_jointes": [
+        {
+          "id": 1,
+          "projet_id": 1,
+          "tache_id": null,
+          "nom_fichier": "ialfred_presentation.pdf",
+          "chemin": "C:\\Users\\Iziboard2\\suivi-projets\\uploads\\proj_1_ialfred_presentation.pdf",
+          "uploade_par": "Romain",
+          "created_at": "2026-04-12 12:26:06"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nom": "IZIBOARD - PROJET DE PROSPECTION COMMERCIALE",
+      "description": "Prospecter pour iziboard : \n\nObjectif : Accompagner les CFO et directeurs administratifs d'entreprises de 50 à 200 collaborateurs en Wallonie, à Bruxelles et au Luxembourg dans la modernisation de leur fonction financière.\nNotre approche repose sur la création d'outils entièrement sur mesure, intégrant l'intelligence artificielle, et connectés à l'environnement existant du client — Microsoft 365 en premier lieu, mais également les autres systèmes en place (ERP, CRM, logiciels comptables).\nLa démarche se structure en deux temps :\n\nCentraliser et structurer la donnée : unification de la collecte des données et documents dispersés dans les différents outils, pour constituer une base fiable et exploitable\nAutomatiser et valoriser les outputs : les outils développés couvrent l'ensemble des besoins opérationnels de la fonction financière — reporting, suivi et élaboration budgétaire, comptabilité analytique, cash planning, planification et analyse — avec un niveau de qualité et de rapidité sensiblement supérieur à ce qui est réalisé manuellement aujourd'hui\n\nChaque solution est construite sur la base des pratiques et des besoins réels du client, sans imposer de rupture dans les habitudes de travail ni remplacer les outils existants. L'objectif est simple : permettre aux équipes financières de gagner en efficacité, en fiabilité et en capacité d'analyse, tout en s'appuyant sur ce qu'elles maîtrisent déjà.",
+      "statut": "Actif",
+      "deadline": "2026-04-27",
+      "cree_par": "Romain",
+      "created_at": "2026-04-12 14:37:18",
+      "updated_at": "2026-04-12 14:46:46",
+      "taches": [
+        {
+          "id": 16,
+          "projet_id": 6,
+          "titre": "Réaliser fichier & pitch commercial et variantes selon secteur avec options commerciales (selon que septentrio fait l'audit ou non)",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-17",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:37:18",
+          "updated_at": "2026-04-12 14:37:18",
+          "projet_nom": "IZIBOARD - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 17,
+          "projet_id": 6,
+          "titre": "Réaliser support par canal",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-22",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:37:18",
+          "updated_at": "2026-04-12 14:37:18",
+          "projet_nom": "IZIBOARD - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 18,
+          "projet_id": 6,
+          "titre": "Lancer campagne et suivi ",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-27",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:37:18",
+          "updated_at": "2026-04-12 14:37:18",
+          "projet_nom": "IZIBOARD - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        }
+      ],
+      "pieces_jointes": []
+    },
+    {
+      "id": 5,
+      "nom": "GOUVERNANCE - PROJET DE PROSPECTION COMMERCIALE",
+      "description": "à définir",
+      "statut": "Actif",
+      "deadline": "2026-04-27",
+      "cree_par": "Romain",
+      "created_at": "2026-04-12 14:37:04",
+      "updated_at": "2026-04-12 14:47:21",
+      "taches": [
+        {
+          "id": 13,
+          "projet_id": 5,
+          "titre": "Réaliser fichier & pitch commercial et variantes selon secteur avec options commerciales (selon que septentrio fait l'audit ou non)",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-17",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:37:04",
+          "updated_at": "2026-04-12 14:37:04",
+          "projet_nom": "GOUVERNANCE - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 14,
+          "projet_id": 5,
+          "titre": "Réaliser support par canal",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-22",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:37:04",
+          "updated_at": "2026-04-12 14:37:04",
+          "projet_nom": "GOUVERNANCE - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 15,
+          "projet_id": 5,
+          "titre": "Lancer campagne et suivi ",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-27",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:37:04",
+          "updated_at": "2026-04-12 14:37:04",
+          "projet_nom": "GOUVERNANCE - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        }
+      ],
+      "pieces_jointes": []
+    },
+    {
+      "id": 4,
+      "nom": "LEVEE DE FONDS - PROJET DE PROSPECTION COMMERCIALE",
+      "description": "à définir",
+      "statut": "Actif",
+      "deadline": "2026-04-27",
+      "cree_par": "Romain",
+      "created_at": "2026-04-12 14:36:46",
+      "updated_at": "2026-04-12 14:47:07",
+      "taches": [
+        {
+          "id": 10,
+          "projet_id": 4,
+          "titre": "Réaliser fichier & pitch commercial et variantes selon secteur avec options commerciales (selon que septentrio fait l'audit ou non)",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-17",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:36:46",
+          "updated_at": "2026-04-12 14:36:46",
+          "projet_nom": "LEVEE DE FONDS - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 11,
+          "projet_id": 4,
+          "titre": "Réaliser support par canal",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-22",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:36:46",
+          "updated_at": "2026-04-12 14:36:46",
+          "projet_nom": "LEVEE DE FONDS - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 12,
+          "projet_id": 4,
+          "titre": "Lancer campagne et suivi ",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-27",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 14:36:46",
+          "updated_at": "2026-04-12 14:36:46",
+          "projet_nom": "LEVEE DE FONDS - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        }
+      ],
+      "pieces_jointes": []
+    },
+    {
+      "id": 2,
+      "nom": "AUDIT - PROJET DE PROSPECTION COMMERCIALE",
+      "description": "Prospecter pour l'audit interne en proposant un outil d'audit interne permettant d'être plus performant et moins coûteux.\n\nObjectif : Proposer aux entreprises des secteurs de l'assurance, des fonds d'investissement et de la construction un service d'audit interne augmenté, s'appuyant sur un outil sur-mesure.\n\nCet outil se connecte à une base de connaissance spécialisée en audit — couvrant la législation applicable, les réglementations européennes, les circulaires BNB et autres référentiels sectoriels — et centralise l'ensemble des éléments propres à l'organisation cliente : procédures internes, structure organisationnelle, description des activités, gouvernance, etc.\n\nIl permet ainsi de :\n-préparer et structurer l'audit : vérification de l'exhaustivité des procédures et règles en place, analyse de leur conformité aux exigences réglementaires en vigueur\n-Piloter les missions : génération automatique de check-lists pour les phases de vérification terrain, planification des audits, suivi des missions et des recommandations\n\nDeux modes d'intervention sont proposés, au choix du client : formation des équipes internes à l'utilisation de l'outil, ou prise en charge directe des missions par nos soins. Dans les deux cas, une maintenance continue est incluse.\nAu final, cet outil permet à nos clients de bénéficier d'un audit interne de haute qualité, à un coût nettement plus accessible que les approches traditionnelles.\n",
+      "statut": "Actif",
+      "deadline": "2026-04-27",
+      "cree_par": "Romain",
+      "created_at": "2026-04-12 13:21:27",
+      "updated_at": "2026-04-12 14:32:56",
+      "taches": [
+        {
+          "id": 4,
+          "projet_id": 2,
+          "titre": "Réaliser fichier & pitch commercial et variantes selon secteur avec options commerciales (selon que septentrio fait l'audit ou non)",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-17",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 13:21:27",
+          "updated_at": "2026-04-12 13:21:27",
+          "projet_nom": "AUDIT - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 5,
+          "projet_id": 2,
+          "titre": "Réaliser support par canal",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-22",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 13:21:27",
+          "updated_at": "2026-04-12 13:21:27",
+          "projet_nom": "AUDIT - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        },
+        {
+          "id": 6,
+          "projet_id": 2,
+          "titre": "Lancer campagne et suivi ",
+          "description": "",
+          "statut": "À faire",
+          "priorite": "Moyenne",
+          "assigne_a": "Clara",
+          "deadline": "2026-04-27",
+          "cree_par": "Romain",
+          "created_at": "2026-04-12 13:21:27",
+          "updated_at": "2026-04-12 13:21:27",
+          "projet_nom": "AUDIT - PROJET DE PROSPECTION COMMERCIALE",
+          "commentaires": []
+        }
+      ],
+      "pieces_jointes": [
+        {
+          "id": 110,
+          "projet_id": 2,
+          "tache_id": null,
+          "nom_fichier": "projet_prospection_audit_interne_v3.pdf",
+          "chemin": "C:\\Users\\Iziboard2\\suivi-projets\\uploads\\proj_2_projet_prospection_audit_interne_v3.pdf",
+          "uploade_par": "Romain",
+          "created_at": "2026-04-12 13:21:27"
+        }
+      ]
+    }
+  ]
+}
