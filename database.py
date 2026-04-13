@@ -183,6 +183,16 @@ def init_db():
                 FOREIGN KEY (projet_id) REFERENCES projets(id) ON DELETE CASCADE,
                 FOREIGN KEY (tache_id) REFERENCES taches(id) ON DELETE CASCADE
             );
+
+            CREATE TABLE IF NOT EXISTS etats_avancement (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                projet_id INTEGER NOT NULL,
+                auteur TEXT NOT NULL,
+                date_avancement TEXT NOT NULL,
+                contenu TEXT NOT NULL,
+                created_at TEXT DEFAULT (datetime('now','localtime')),
+                FOREIGN KEY (projet_id) REFERENCES projets(id) ON DELETE CASCADE
+            );
         """)
         # Migration : ajouter password_hash si la colonne n'existe pas
         cols = [row[1] for row in conn.execute("PRAGMA table_info(utilisateurs)").fetchall()]
@@ -391,6 +401,33 @@ def supprimer_piece_jointe(pj_id):
         if row and os.path.exists(row["chemin"]):
             os.remove(row["chemin"])
         conn.execute("DELETE FROM pieces_jointes WHERE id=?", (pj_id,))
+
+# --- États d'avancement ---
+
+def get_etats_avancement(projet_id):
+    with get_connection() as conn:
+        return [dict(r) for r in conn.execute(
+            "SELECT * FROM etats_avancement WHERE projet_id=? ORDER BY date_avancement DESC, created_at DESC",
+            (projet_id,)
+        ).fetchall()]
+
+def ajouter_etat_avancement(projet_id, auteur, date_avancement, contenu):
+    with get_write_connection() as conn:
+        conn.execute(
+            "INSERT INTO etats_avancement (projet_id, auteur, date_avancement, contenu) VALUES (?, ?, ?, ?)",
+            (projet_id, auteur, date_avancement, contenu)
+        )
+
+def modifier_etat_avancement(etat_id, date_avancement, contenu):
+    with get_write_connection() as conn:
+        conn.execute(
+            "UPDATE etats_avancement SET date_avancement=?, contenu=? WHERE id=?",
+            (date_avancement, contenu, etat_id)
+        )
+
+def supprimer_etat_avancement(etat_id):
+    with get_write_connection() as conn:
+        conn.execute("DELETE FROM etats_avancement WHERE id=?", (etat_id,))
 
 # --- Stats ---
 

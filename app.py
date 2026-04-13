@@ -19,7 +19,8 @@ from database import (
     get_pieces_jointes, ajouter_piece_jointe, supprimer_piece_jointe,
     get_utilisateurs, ajouter_utilisateur, get_noms_utilisateurs, get_stats,
     save_session, load_session, get_last_user,
-    verifier_mot_de_passe, utilisateur_a_mot_de_passe, definir_mot_de_passe
+    verifier_mot_de_passe, utilisateur_a_mot_de_passe, definir_mot_de_passe,
+    get_etats_avancement, ajouter_etat_avancement, modifier_etat_avancement, supprimer_etat_avancement
 )
 from notifications import (
     notifier_assignation, notifier_commentaire, notifier_statut_change, notifier_deadline
@@ -965,7 +966,7 @@ def page_projets():
         en_retard = len([t for t in taches if t["deadline"] and t["deadline"] < date.today().isoformat() and t["statut"] != "Terminé"])
 
         with st.expander(f"{'🟢' if p['statut']=='Actif' else '🟡' if p['statut']=='En pause' else '⚪'} **{p['nom']}** — {p['statut']} — {pct}% ({terminees}/{total})" + (f" — :red[{en_retard} en retard]" if en_retard else ""), expanded=False):
-            tab_info, tab_taches, tab_docs = st.tabs(["Informations", "Taches", "Documents"])
+            tab_info, tab_taches, tab_docs, tab_avancement = st.tabs(["Informations", "Taches", "Documents", "État d'avancement"])
 
             with tab_info:
                 st.markdown(p.get("description", ""))
@@ -1070,6 +1071,69 @@ def page_projets():
                 pjs = get_pieces_jointes(projet_id=p["id"])
                 for pj in pjs:
                     afficher_piece_jointe(pj, prefix=f"pj_{pj['id']}")
+
+            with tab_avancement:
+                # Formulaire pour ajouter un état d'avancement
+                with st.popover("+ Nouvel état d'avancement"):
+                    ea_date = st.date_input("Date", value=date.today(), key=f"ea_date_{p['id']}")
+                    ea_contenu = st.text_area(
+                        "Décrivez ce qui a été réalisé et ce qu'il reste à faire",
+                        key=f"ea_contenu_{p['id']}",
+                        height=200
+                    )
+                    if st.button("Publier", key=f"ea_submit_{p['id']}", type="primary"):
+                        if ea_contenu.strip():
+                            ajouter_etat_avancement(
+                                p["id"],
+                                st.session_state.utilisateur,
+                                ea_date.isoformat(),
+                                ea_contenu.strip()
+                            )
+                            st.success("État d'avancement ajouté !")
+                            st.rerun()
+                        else:
+                            st.warning("Veuillez saisir un contenu.")
+
+                # Affichage des états d'avancement (du plus récent au moins récent)
+                etats = get_etats_avancement(p["id"])
+                if not etats:
+                    st.info("Aucun état d'avancement pour ce projet.")
+                else:
+                    for ea in etats:
+                        ea_date_fmt = ea["date_avancement"]
+                        try:
+                            ea_date_fmt = datetime.strptime(ea["date_avancement"], "%Y-%m-%d").strftime("%d/%m/%Y")
+                        except (ValueError, TypeError):
+                            pass
+                        with st.container(border=True):
+                            col_ea1, col_ea2, col_ea3 = st.columns([5, 1, 1])
+                            with col_ea1:
+                                st.markdown(f"**{ea_date_fmt}** — par **{ea['auteur']}**")
+                            if ea["auteur"] == st.session_state.utilisateur:
+                                with col_ea2:
+                                    with st.popover("Modifier", use_container_width=True):
+                                        edit_date = st.date_input(
+                                            "Date",
+                                            value=datetime.strptime(ea["date_avancement"], "%Y-%m-%d").date(),
+                                            key=f"ea_edit_date_{ea['id']}"
+                                        )
+                                        edit_contenu = st.text_area(
+                                            "Contenu",
+                                            value=ea["contenu"],
+                                            key=f"ea_edit_contenu_{ea['id']}",
+                                            height=200
+                                        )
+                                        if st.button("Sauvegarder", key=f"ea_save_{ea['id']}", type="primary"):
+                                            if edit_contenu.strip():
+                                                modifier_etat_avancement(ea["id"], edit_date.isoformat(), edit_contenu.strip())
+                                                st.success("Modifié !")
+                                                st.rerun()
+                                with col_ea3:
+                                    if st.button("Supprimer", key=f"ea_del_{ea['id']}", type="secondary"):
+                                        supprimer_etat_avancement(ea["id"])
+                                        st.rerun()
+                            st.markdown(ea["contenu"])
+                            st.caption(f"Publié le {ea['created_at']}")
 
 
 # =====================================================================
