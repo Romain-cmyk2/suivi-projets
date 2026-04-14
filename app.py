@@ -1059,14 +1059,20 @@ def page_projets():
 
             with tab_docs:
                 # Upload
-                uploaded = st.file_uploader("Joindre un document", key=f"upload_proj_{p['id']}")
+                uploader_key = f"upload_proj_{p['id']}"
+                uploaded = st.file_uploader("Joindre un document", key=uploader_key)
                 if uploaded:
-                    filepath = os.path.join(UPLOAD_DIR, f"proj_{p['id']}_{uploaded.name}")
-                    with open(filepath, "wb") as f:
-                        f.write(uploaded.getbuffer())
-                    ajouter_piece_jointe(uploaded.name, filepath, st.session_state.utilisateur, projet_id=p["id"])
-                    st.success(f"Fichier '{uploaded.name}' uploade !")
-                    st.rerun()
+                    # Éviter les doublons lors des reruns : on mémorise la signature du fichier traité
+                    sig = (uploaded.file_id, uploaded.name, uploaded.size)
+                    processed_key = f"processed_{uploader_key}"
+                    if st.session_state.get(processed_key) != sig:
+                        filepath = os.path.join(UPLOAD_DIR, f"proj_{p['id']}_{uploaded.name}")
+                        with open(filepath, "wb") as f:
+                            f.write(uploaded.getbuffer())
+                        ajouter_piece_jointe(uploaded.name, filepath, st.session_state.utilisateur, projet_id=p["id"])
+                        st.session_state[processed_key] = sig
+                        st.success(f"Fichier '{uploaded.name}' uploade !")
+                        st.rerun()
 
                 pjs = get_pieces_jointes(projet_id=p["id"])
                 for pj in pjs:
@@ -1353,14 +1359,19 @@ def page_tache_detail():
             """, unsafe_allow_html=True)
 
     with tab3:
-        uploaded = st.file_uploader("Joindre un document", key=f"upload_tache_{tache_id}")
+        uploader_key = f"upload_tache_{tache_id}"
+        uploaded = st.file_uploader("Joindre un document", key=uploader_key)
         if uploaded:
-            filepath = os.path.join(UPLOAD_DIR, f"tache_{tache_id}_{uploaded.name}")
-            with open(filepath, "wb") as f:
-                f.write(uploaded.getbuffer())
-            ajouter_piece_jointe(uploaded.name, filepath, st.session_state.utilisateur, tache_id=tache_id)
-            st.success(f"Fichier '{uploaded.name}' uploade !")
-            st.rerun()
+            sig = (uploaded.file_id, uploaded.name, uploaded.size)
+            processed_key = f"processed_{uploader_key}"
+            if st.session_state.get(processed_key) != sig:
+                filepath = os.path.join(UPLOAD_DIR, f"tache_{tache_id}_{uploaded.name}")
+                with open(filepath, "wb") as f:
+                    f.write(uploaded.getbuffer())
+                ajouter_piece_jointe(uploaded.name, filepath, st.session_state.utilisateur, tache_id=tache_id)
+                st.session_state[processed_key] = sig
+                st.success(f"Fichier '{uploaded.name}' uploade !")
+                st.rerun()
 
         pjs = get_pieces_jointes(tache_id=tache_id)
         for pj in pjs:
